@@ -3,7 +3,7 @@ import { Check, Star, Crown, Shield } from 'lucide-react';
 
 const Pricing = () => {
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-black to-gray-900 text-white">
+    <section id="pricing" className="py-16 px-4 bg-gradient-to-br from-black to-gray-900 text-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">

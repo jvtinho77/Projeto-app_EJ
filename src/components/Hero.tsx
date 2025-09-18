@@ -1,7 +1,24 @@
 import React from 'react';
 import { Shield, Clock, Target, Star, Zap, CheckCircle } from 'lucide-react';
+import { useNavigation } from '../contexts/NavigationContext';
 
 const Hero = () => {
+  const { goToOffers } = useNavigation();
+  
+  const handleClick = () => {
+    // Tentar múltiplas abordagens
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback: scroll para uma posição aproximada
+      window.scrollTo({
+        top: window.innerHeight * 4,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="bg-gradient-to-br from-black via-gray-900 to-black text-white py-20 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -23,14 +40,20 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
-          <div className="flex items-center text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+          <button 
+            onClick={handleClick}
+            className="flex items-center text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:bg-white/10 transition-colors cursor-pointer"
+          >
             <Clock className="w-6 h-6 text-rose-400 mr-3" />
             <span className="font-medium">21 dias de transformação</span>
-          </div>
-          <div className="flex items-center text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+          </button>
+          <button 
+            onClick={handleClick}
+            className="flex items-center text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:bg-white/10 transition-colors cursor-pointer"
+          >
             <Target className="w-6 h-6 text-rose-400 mr-3" />
             <span className="font-medium">Controle total garantido</span>
-          </div>
+          </button>
         </div>
 
         {/* Elementos decorativos */}
@@ -46,7 +69,10 @@ const Hero = () => {
         </div>
 
         <div className="relative">
-          <button className="bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold py-3 px-8 rounded-full text-base shadow-2xl transition-all duration-300 transform hover:scale-105 relative z-10">
+          <button 
+            onClick={handleClick}
+            className="bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold py-2.5 px-6 rounded-full text-sm shadow-2xl transition-all duration-300 transform hover:scale-105 relative z-10"
+          >
             <Zap className="w-5 h-5 inline mr-2" />
             DESCOBRIR O MÉTODO AGORA
           </button>

@@ -1,7 +1,24 @@
 import React from 'react';
 import { ArrowRight, Clock, Heart } from 'lucide-react';
+import { useNavigation } from '../contexts/NavigationContext';
 
 const CTA = () => {
+  const { goToOffers } = useNavigation();
+  
+  const handleClick = () => {
+    // Tentar múltiplas abordagens
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback: scroll para uma posição aproximada
+      window.scrollTo({
+        top: window.innerHeight * 4,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="py-16 px-4 bg-gradient-to-br from-black to-gray-900 text-white">
       <div className="max-w-4xl mx-auto text-center">
@@ -40,7 +57,10 @@ const CTA = () => {
           </p>
         </div>
 
-        <button className="bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-black py-3 px-8 rounded-full text-base shadow-2xl transition-all duration-300 transform hover:scale-105 mb-6">
+        <button 
+          onClick={handleClick}
+          className="bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-black py-2.5 px-6 rounded-full text-sm shadow-2xl transition-all duration-300 transform hover:scale-105 mb-6"
+        >
           🔥 QUERO COMEÇAR O DESAFIO AGORA
         </button>
 
